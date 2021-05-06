@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="tem">
+<head>
+    <meta charset="utf-8"/>
+    <title>Debut reclamayion</title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}" />
+    <script type="text/javascript" src="Js/jquery-3.5.1.min.js/" th:src="@{Js/jquery-3.5.1.min.js}"></script>
+
+</head>
+<body>
+
+<p></p>
+<div  layout:fragment="content">
+<div class="container">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Debut reclemation</div>
+                    <div class="panel-body">
+            <form th:action="@{/commencer}" method="post">
+
+
+
+                <div class="form-group">
+                    <label for="sel1" >choisir semester</label>
+                    <select class="form-control" id="sel1"  name="semestre">
+
+                        <option th:each="semestre:${semestres}"  th:text="${semestre.nomSemester}" ></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="sel1">Type de reclamtion</label>
+                    <select class="form-control" id="sel2"  name="type">
+                        <option >devoir</option>
+                        <option >composition</option>
+                        <option >session complementaire</option>
+                    </select>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary" >Commencer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
+</html>

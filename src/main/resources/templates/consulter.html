@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/ layout"
+      layout:decorator="layout">
+<head>
+
+
+    <meta charset="UTF-8"/>
+    <title>consultation</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"
+          th:href="@{css/bootstrap.min.css}"
+    />
+    <script type="text/javascript" src="Js/jquery-3.5.1.min.js/" th:src="@{Js/jquery-3.5.1.min.js}"></script>
+    <script type="text/javascript" src="Js/bootstrap.min.js/" th:src="@{Js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+<p></p>
+<p></p><p></p>
+<div layout:fragment="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Information de la Reclamation </div>
+                    <div class="panel-body">
+                        <div class="col-md-12">
+ 
+            <form  method="post">
+               
+            
+              <div class="form-group">
+                    <label  class="control-label"  >matricule :</label>
+
+                    <input class="form-control" name="semestre2"    th:value="${redv.utilisateur.code}" disabled="disabled" >
+                     
+
+                </div>
+                  <div class="form-group">
+                    <label  class="control-label"  > nom:</label>
+
+                    <input class="form-control" name="semestre2"   th:value="${redv.utilisateur.nom}" disabled="disabled" >
+                     
+
+                </div>
+                   <div class="form-group">
+                    <label  class="control-label"  > email:</label>
+
+                    <input class="form-control" name="semestre2"   th:value="${redv.utilisateur.email}"  disabled="disabled" >
+                     
+
+                </div>
+                   <div class="form-group">
+                    <label  class="control-label"  > filiere:</label>
+
+                    <input class="form-control" name="semestre2"   th:value="${redv.utilisateur.filiere.nomFiliere}" disabled="disabled" >
+                     
+
+                </div>
+                  <div class="form-group">
+                    <label  class="control-label"  >semester :</label>
+
+                    <input class="form-control" name="semestre2"   th:value="${redv.semestre}"  disabled="disabled" >
+                     
+
+                </div>
+               
+
+                <div class="form-group">
+                    <label  class="control-label"  >typeReclamation :</label>
+                
+                <input class="form-control" name="typr"   th:value="${redv.typeReclamation}"  disabled="disabled" >
+                     
+                
+  
+                </div>
+                <div class="form-group">
+                    <label class="control-label" > Matier</label>
+                       <input class="form-control" name="semestre2"   th:value="${redv.nomMatiere}" disabled="disabled"> 
+                     
+      
+                </div>
+
+                <div class="form-group green-border-focus">
+                    <label class="control-label">Description</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea5" rows="3" name="description" th:text="${redv.descriptionReclamation}"  disabled="disabled" >
+                   </textarea>
+                </div>
+                <div class="form-group" >
+                    <label class="control-label">Note afficher</label>
+                    <input type="text" class="form-control" name="${redv.notAffiche}" required="required" th:value="${redv.notAffiche}">
+                </div>
+                <div class="form-group" th:if ="${redv.typeReclamation}==devoir">
+                    <label class="control-label" >Note reel</label>
+                    <input type="text" class="form-control"  name="notereel"  required="required" th:value="${redv.notReel}">
+                </div>
+
+
+                <div>
+                 <button type="submit" class="btn btn-primary" >Accepter</button>
+                    <button  class="btn btn-danger" >Refuser</button>
+                     </div>
+            </form>
+   
+
+                         
+                            </div>
+                        </div>
+
+                    </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="tem">
+<head>
+
+    <link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}" />
+    <script type="text/javascript" src="Js/jquery-3.5.1.min.js/" th:src="@{Js/jquery-3.5.1.min.js}"></script>
+
+</head>
+<body>
+<p></p>
+<div  layout:fragment="content">
+<div class="container">
+
+<div class="row">
+<div class="col-md-8">
+    <div class="panel panel-primary">
+        <div class="panel-heading"> Completer votre reclemation</div>
+        <div class="panel-body" th:if ="${type}==devoir">
+            <form th:action="@{/envoyer}" method="post">
+                <div class="form-group">
+                    <label  class="control-label"  >semester :</label>
+
+                    <select class="form-control" name="semestre2" >
+                        <option  th:each="sm:${semestres}"  th:text="${sm}" name="semestre" ></option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+                   <label  class="control-label"  >type :</label>
+                
+                    <select class="form-control" name="type" >
+                      
+                        <option  th:each="ty:${types}"  th:text="${ty}"  ></option>
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" >choisir Matier</label>
+                    <select class="form-control" name="matiere"  required="required">
+                        <option  th:each="mat:${matiers}"  th:text="${mat.nomMatiere}"   required="required"></option>
+                    </select>
+                </div>
+
+                <div class="form-group green-border-focus">
+                    <label class="control-label">Description</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea5" rows="3" name="description"  required="required"></textarea>
+                </div>
+                <div class="form-group" >
+                    <label class="control-label">Note afficher</label>
+                    <input type="text" class="form-control" name="notAffiché"  required="required">
+                </div>
+                <div class="form-group" >
+                    <label class="control-label" >Note reel</label>
+                    <input type="text" class="form-control"  name="notereel"  required="required">
+                </div>
+
+
+                <div>
+                 <button type="submit" class="btn btn-primary" >Envoyer</button>
+                    <button  class="btn btn-danger"  onclick="confirm('etes vous annuler votre reclamation')"  th:href="@{/}">annuler</button>
+                     </div>
+            </form>
+        </div>
+
+
+        <div class="panel-body"th:if ="${type}!=devoir">
+            <form th:action="@{/reclamtions}" method="post">
+
+
+
+                <div class="form-group">
+                    <label  class="control-label"  >semester :</label>
+
+                    <select class="form-control" name="semestre" >
+                        <option  th:each="sm:${semestres}"  th:text="${sm}" ></option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+                  <label  class="control-label"  >type :</label>
+                
+                    <select class="form-control" name="type" >
+
+                        <option  th:each="ty:${types}"  th:text="${ty}"  ></option>
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" >choisir Matier</label>
+                    <select class="form-control" name="matiere"  required="required">
+                        <option  th:each="mat:${matiers}"  th:text="${mat.nomMatiere}"   required="required"></option>
+                    </select>
+                </div>
+
+                <div class="form-group green-border-focus">
+                    <label class="control-label">Description</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea5" rows="3" name="description"  required="required"></textarea>
+                </div>
+                <div class="form-group" >
+                    <label class="control-label">Note</label>
+                    <input type="text" class="form-control" name="note"  required="required">
+                </div>
+             
+
+
+                <div>
+                 <button type="submit" class="btn btn-primary" >Envoyer</button>
+                    <button  class="btn btn-danger"  onclick="confirm('etes vous annuler votre reclamation')"  th:href="@{/}">annuler</button>
+                     </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+</body>
+</html>

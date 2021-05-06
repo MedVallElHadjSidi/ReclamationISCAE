@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/ layout"
+      layout:decorator="layout">
+<head>
+
+
+    <meta charset="UTF-8"/>
+    <title>Liste Reclamaiom compo</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"
+          th:href="@{css/bootstrap.min.css}"
+    />
+    <script type="text/javascript" src="Js/jquery-3.5.1.min.js/" th:src="@{Js/jquery-3.5.1.min.js}"></script>
+    <script type="text/javascript" src="Js/bootstrap.min.js/" th:src="@{Js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+<p></p>
+<p></p><p></p>
+<div  layout:fragment="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Liste des Reclamations Dev-comp </div>
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                                                <table class="table table-bordered">
+                                        <thead><tr>
+                                            <td>Reclamation</td>
+                                            <td>nom</td>
+                                            <td>email</td>  
+                                            <td>filiere</td>  
+                                            <td>typeReclamation</td>
+                                             <td>semestre</td>
+                                            <td>nomMatiere</td>
+                                            <td>notAfficher</td>
+                                             <td>descriptionReclamation</td>
+                                            
+      
+                                        </tr>
+
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="redv:${reclamations2}">
+                                            <td th:text="${redv.idReclamation}"></td>
+                                            <td th:text="${redv.utilisateur.nom}"></td>
+                                            <td th:text="${redv.utilisateur.email}"></td>
+                                              <td th:text="${redv.utilisateur.filiere.nomFiliere}"></td>
+                                             <td th:text="${redv.typeReclamation}"></td>
+                                            <td th:text="${redv.semestre}"></td>
+                                            <td th:text="${redv.nomMatiere}"></td>
+                                             <td th:text="${redv.notAffiche}"></td>
+                                            <td th:text="${redv.descriptionReclamation}"></td>
+                                          
+
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                <ul  class="nav nav-pills">
+                                    <li th:class="${pageactuel2==status.index}?'active':''" th:each="pag,status:${pages2}">
+                                        <a th:href="@{/listesc(page2=${status.index})}" th:text="${status.index}"></a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

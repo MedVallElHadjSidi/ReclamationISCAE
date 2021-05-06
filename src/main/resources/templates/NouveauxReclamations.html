@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/ layout"
+      layout:decorator="layout">
+
+<body>
+<p></p>
+<p></p><p></p>
+<div layout:fragment="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Liste des Nouveaux Reclamations  </div>
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                                    <table class="table table-bordered">
+                                        <thead><tr>
+                                            <td>Reclamation</td>
+                                            <td>nom</td>
+                                            <td>email</td>  
+                                            <td>filiere</td>  
+                                            <td>typeReclamation</td>
+                                             <td>semestre</td>
+                                            <td>nomMatiere</td>
+                                     
+                                        </tr>
+
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="redv:${reclamations}">
+                                            <td th:text="${redv.idReclamation}"></td>
+                                            <td th:text="${redv.utilisateur.nom}"></td>
+                                            <td th:text="${redv.utilisateur.email}"></td>
+                                              <td th:text="${redv.utilisateur.filiere.nomFiliere}"></td>
+                                             <td th:text="${redv.typeReclamation}"></td>
+                                            <td th:text="${redv.semestre}"></td>
+                                            <td th:text="${redv.nomMatiere}"></td>
+                                            <td ><a  th:href="@{/consulter(id=${redv.idReclamation})}" class="btn btn-success">consulter</a></td>
+                                            
+                                           
+                                          
+
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                <ul  class="nav nav-pills">
+                                    <li th:class="${pageactuel==status.index}?'active':''" th:each="pag,status:${pages}">
+                                        <a th:href="@{/nouveauxDemande(page=${status.index})}" th:text="${status.index}"></a>
+
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+            </div>
+
+        </div>
+        
+        
+        
+    
+</div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
